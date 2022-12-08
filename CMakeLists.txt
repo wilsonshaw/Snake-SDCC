@@ -4,6 +4,8 @@ set(CMAKE_TOOLCHAIN_FILE TC_8051.cmake)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_GENERATOR Ninja)
 
+set(CMAKE_STATIC_LIBRARY_PREFIX "")
+
 project(Snake C)
 
 add_subdirectory(src)
@@ -17,6 +19,6 @@ add_custom_target(
 
 add_custom_target(
 	dl
-	COMMAND python3 -m stcgal -P stc89 -b 115200 ./${PROJECT_NAME}.hex
+	COMMAND sudo python3 -m stcgal -P stc89 -b 115200 ./${PROJECT_NAME}.hex
 	DEPENDS Hex
 )
